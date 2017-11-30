@@ -28,21 +28,18 @@ void addNeighbor(Node nodeCurrent, Node nodeNeighbor);
 void updateRouteTable(int** rt, int nodeID, int distance, int nextHop);
 void readScenarioCount();
 void readAndExecuteScenarios();
+void shareInformation(int fromNodeIdx, int toNodeIdx);
+bool isNeighbor(Node currentNode, Node nodeCheck);
 
 // Main
 int main() {
     readNodeAndEdgeCount();
     initializeNodes();
-    printTest();
     setEdges();
-    for (int i=0;i<nodeCount;i++) {
-        printRouteTable(nodes[i].routeTable);
-        cout<<endl;
-    }
+    readScenarioCount();
     readAndExecuteScenarios();
     for (int i=0;i<nodeCount;i++) {
         printRouteTable(nodes[i].routeTable);
-        cout<<endl;
     }
     return 0;
 }
@@ -133,11 +130,13 @@ void readAndExecuteScenarios() {
 }
 
 void shareInformation(int fromNodeIdx, int toNodeIdx) {
-    int** routeInformation = nodes[fromNodeIdx].routeTable;
+    int** routeInformation = nodes[fromNodeIdx-1].routeTable;
     for (int i = 0; i<nodeCount;i++) {
-        if ((i+1 != nodes[toNodeIdx].id) && (!nodes[toNodeIdx].isNeighbor(nodes[i])) && (routeInformation[i][0] > 0)) {
-            if ((nodes[toNodeIdx].routeTable[i][0] == -1) || (routeInformation[i][0]+1 < nodes[toNodeIdx].routeTable[i][0])) {
-                nodes[toNodeIdx].updateRouteTable(i+1,routeInformation[i][0]+1,fromNodeIdx+1);
+        if ((i+1 != nodes[toNodeIdx-1].id) && (!isNeighbor(nodes[toNodeIdx-1],nodes[i])) && (routeInformation[i][0] > 0)) {
+            if ((nodes[toNodeIdx-1].routeTable[i][0] == -1) || (routeInformation[i][0]+1 < nodes[toNodeIdx-1].routeTable[i][0])) {
+                //printRouteTable(nodes[toNodeIdx-1].routeTable);
+                //cout << nodes[toNodeIdx].routeTable << endl;
+                updateRouteTable(nodes[toNodeIdx-1].routeTable,i+1,routeInformation[i][0]+1,fromNodeIdx);
             }
         }
     }
