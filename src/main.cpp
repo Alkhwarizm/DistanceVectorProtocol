@@ -18,7 +18,6 @@ Node* nodes;
 
 // Function Declaration
 void readNodeAndEdgeCount();
-void printTest();
 void initializeNodes();
 void printRouteTable(int** rt);
 Node searchNode(int idNode);
@@ -68,11 +67,6 @@ void initializeNodes(){
             }
         }
     }
-}
-
-void printTest() {
-    cout << "Nodes: " << nodeCount << endl;
-    cout << "Edges: " << edgeCount << endl;
 }
 
 void printRouteTable(int** rt) {
@@ -130,13 +124,12 @@ void readAndExecuteScenarios() {
 }
 
 void shareInformation(int fromNodeIdx, int toNodeIdx) {
-    int** routeInformation = nodes[fromNodeIdx-1].routeTable;
     for (int i = 0; i<nodeCount;i++) {
-        if ((i+1 != nodes[toNodeIdx-1].id) && (!isNeighbor(nodes[toNodeIdx-1],nodes[i])) && (routeInformation[i][0] > 0)) {
-            if ((nodes[toNodeIdx-1].routeTable[i][0] == -1) || (routeInformation[i][0]+1 < nodes[toNodeIdx-1].routeTable[i][0])) {
-                //printRouteTable(nodes[toNodeIdx-1].routeTable);
-                //cout << nodes[toNodeIdx].routeTable << endl;
-                updateRouteTable(nodes[toNodeIdx-1].routeTable,i+1,routeInformation[i][0]+1,fromNodeIdx);
+        if ((i+1 != nodes[toNodeIdx-1].id) && (!isNeighbor(nodes[toNodeIdx-1],nodes[i])) && (nodes[fromNodeIdx-1].routeTable[i][0] > 0)) {
+            if ((nodes[toNodeIdx-1].routeTable[i][0] == -1) || (nodes[fromNodeIdx-1].routeTable[i][0]+1 <= nodes[toNodeIdx-1].routeTable[i][0])) {
+                if ((nodes[toNodeIdx-1].routeTable[i][1] == -1) || (nodes[fromNodeIdx-1].routeTable[i][0]+1 < nodes[toNodeIdx-1].routeTable[i][1])) {
+                    updateRouteTable(nodes[toNodeIdx-1].routeTable,i+1,nodes[fromNodeIdx-1].routeTable[i][0]+1,fromNodeIdx);
+                }
             }
         }
     }
