@@ -5,7 +5,7 @@ using namespace std;
 struct Node {
     int id;
     int* neighbors;
-    int** routeTable
+    int** routeTable;
 };
 
 // Global Variable
@@ -19,7 +19,7 @@ Node* nodes;
 void readNodeAndEdgeCount();
 void printTest();
 void initializeNodes();
-void printRouteTable(int** rt, int node);
+void printRouteTable(int** rt);
 
 // Main
 int main() {
@@ -27,7 +27,10 @@ int main() {
     initializeNodes();
 
     printTest();
-    printRouteTable();
+    for (int i=0;i<nodeCount;i++) {
+        printRouteTable(nodes[i].routeTable);
+        cout << endl;
+    }
     return 0;
 }
 
@@ -61,8 +64,8 @@ void printTest() {
     cout << "Edges: " << edgeCount << endl;
 }
 
-void printRouteTable(int** rt, int node) {
+void printRouteTable(int** rt) {
     for (int i = 0; i < nodeCount ; ++i) {
-        
+        cout << rt[i][0] << " " << rt[i][1];
     }
 }
