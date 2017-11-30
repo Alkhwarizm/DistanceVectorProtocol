@@ -3,6 +3,7 @@
 ## IF-3130 Jaringan Komputer
 
 Nama Kelompok : Bareng yuk? Ayuk
+
 Anggota :
 
 1. 13515014 - Mokhammad Ferdi Ghozali
@@ -17,11 +18,9 @@ Anggota :
 
 ## Penjelasan Program
 
- Bagaimana anda mensimulasikan sebuah node dalam program anda? Bagaimana proses pengiriman pesan antar node terjadi? Jelaskan dengan menggunakan nama fungsi dan/atau struktur data yang anda gunakan
-
 Kami melakukan simulasi sebuah node dengan membuat array Node yang tiap Nodenya menyimpan informasi idnya, routingTable dan tetangganya. Lalu, tiap node akan saling berkomunikasi menyebarkan routing tabelnya melalui skenario yang telah disediakan.
 
-### struct Node
+### > struct Node
 
 struct Node akan berisi id, neighbors, routeTable, dan neighborCounter.
 Node ini akan merepresentasikan 1 buah node pada jaringan.
@@ -30,31 +29,31 @@ neighbors akan berisi semua id node tetangganya yang terhubung langsung.
 routeTable berisi distance, dan nextHop untuk tiap node.
 neighborCounter untuk penanda indeks terakhir dari tabel neighbors yang telah terisi.
 
-### initializeNodes
+### > initializeNodes
 
 Prosedur ini akan melakukan inisialisasi semua node yang akan diproses. Node yang terdefinisi adalah node dengan batasan 1 sampai N.
 
-### setEdges
+### > setEdges
 
 Prosedur ini akan melakukan setting pada edges pada jaringan. Node yang saling terhubung akan didefinisikan disini menggunakan connectNode.
 
-### connectNode
+### > connectNode
 
 Prosedur ini akan melakukan set neighbor pada node yang terhubung langsung. Dia akan menambahkan neighbor pada kedua node menggunakan addNeighbor.
 
-### addNeighbor
+### > addNeighbor
 
 addNeighbor akan menambahkan node neighbor pada nodenya sekarang. Setelah itu, akan dilakukan update route tabel pada nodenya. Hal ini dilakukan dengan updateRouteTable.
 
-### updateRouteTable
+### > updateRouteTable
 
 Prosedur ini akan melakukan update terhadap route table. Dia akan mengubah nilai pada routeTable index tertentu sesuai dengan distance dan nextHop yang dimasukkan.
 
-### readAndExecuteScenarios
+### > readAndExecuteScenarios
 
 Prosedur ini akan membaca skenario yang akan dilakukan dan melakukan eksekusi skenario. Eksekusi skenario dilakuka dengan menggunakan shareInformation.
 
-### shareInformation
+### > shareInformation
 
 Prosedur ini akan melakukan update route table dari input node pengirim ke node tujuan. Node tujuan akan mengupdate route tabelnya bila beberapa syarat terpenuhi. Yaitu sebagai berikut :
 
@@ -68,9 +67,9 @@ Proses update dilakuka dengan updateRouteTable.
 
 ## Pembagian Tugas
 
-1. Mokhmammad Ferdi Ghozali mengerjakan fungsi setEdges, connectNodes, addNeighbor, updateRouteTable,
-1. Finiko Kasula Novenda mengerjakan fungsi searchNode, printRouteTable, setEdges, connectNodes, addNeighbor, updateRouteTable, shareInformation.
-1. M. Iqbal Al Khowarizmi mengerjakan fungsi readNodeAndEdgeCount, initializeNodes, readScenarioCount, readAndExecuteScenarios, shareInformation, isNeighbor
+1. Mokhmammad Ferdi Ghozali mengerjakan fungsi setEdges, connectNodes, addNeighbor dan updateRouteTable.
+1. Finiko Kasula Novenda mengerjakan fungsi searchNode, printRouteTable, setEdges, connectNodes, addNeighbor, updateRouteTable dan shareInformation.
+1. M. Iqbal Al Khowarizmi mengerjakan fungsi readNodeAndEdgeCount, initializeNodes, readScenarioCount, readAndExecuteScenarios, shareInformation dan isNeighbor.
 
 ## Jawaban Pertanyaan
 
