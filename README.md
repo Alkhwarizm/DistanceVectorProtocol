@@ -12,7 +12,8 @@ Anggota :
 ## Petunjuk penggunaan program
 
 1. Buka command prompt pada root folder.
-1. Masukkan command 'make' untuk menjalankan program.
+1. Masukkan command 'make' untuk kompilasi program.
+1. Jalankan main.o pada folder src.
 
 ## Bagaimana anda mensimulasikan sebuah node dalam program anda? Bagaimana proses pengiriman pesan antar node terjadi?     Jelaskan dengan menggunakan nama fungsi dan/atau struktur data yang anda gunakan
 
